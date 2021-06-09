@@ -2,24 +2,18 @@
 " vim: set foldmethod=marker
 " -----------------------------------------------------------------------------
 " EasyMotion {{{
-
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
-
 " Turn on case-insensitive feature
 let g:EasyMotion_smartcase = 1
-
 " JK motions: Line motions
 nmap <Leader>j <Plug>(easymotion-j)
 nmap <Leader>k <Plug>(easymotion-k)
-
 " s{char}{char} to move to {char}{char}
 nmap s <Plug>(easymotion-overwin-f)
-
 " }}}
 " -----------------------------------------------------------------------------
 " Multiple-lines {{{
 let g:multi_cursor_use_default_mapping=0
-
 " Default mapping
 let g:multi_cursor_start_word_key      = '<C-n>'
 let g:multi_cursor_select_all_word_key = '<A-n>'
@@ -32,72 +26,48 @@ let g:multi_cursor_quit_key            = '<Esc>'
 " }}}
 " -----------------------------------------------------------------------------
 " autopairs {{{
-
 let g:AutoPairsFlyMode = 0
 let g:AutoPairsShortcutBackInsert = '<A-b>'
 let g:AutoPairsShortcutJump = '<A-m>'
-
 " }}}
 " -----------------------------------------------------------------------------
 " airline {{{
-
 let g:airline_theme='transparent'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#keymap#enabled = 0
 let g:airline_section_z = "\ue0a1:%l/%L Col:%c"
 let g:Powerline_symbols='unicode'
 let g:airline#extensions#xkblayout#enabled = 0
-
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
-
 let g:airline#extensions#tabline#formatter = 'default'
-
-" }}}
-" -----------------------------------------------------------------------------
-" Incsearch {{{
-
-map z/ <Plug>(incsearch-easymotion-/)
-map z? <Plug>(incsearch-easymotion-?)
-map zg/ <Plug>(incsearch-easymotion-stay)
-
 " }}}
 " -----------------------------------------------------------------------------
 " vimwiki {{{
-
 let g:vimwiki_list = [{'path':'~/.vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
 let g:vivwiki_ext2syntax = {'.md': 'markdownn', '.markdown': 'markdown', '.mdown': 'markdown'}
-
 " }}}
 " -----------------------------------------------------------------------------
 " markdown {{{
-
 let g:vimwiki_markdown_link_ext = 1
 let g:taskwiki_markup_syntax = 'markdown'
 let g:markdown_folding = 1
-
 " }}}
 " -----------------------------------------------------------------------------
 " FZF {{{
-
 nnoremap <C-p> :Files<cr>
 nnoremap <C-b> :Buffers<cr>
 nnoremap <A-g> :Commits<cr>
-
 " Mapping selecting mappings
 nmap <Leader>q <plug>(fzf-maps-n)
 xmap <Leader>q <plug>(fzf-maps-x)
 omap <Leader>q <plug>(fzf-maps-o)
-
 " Insert mode completion
 imap <c-x><c-w> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-l> <plug>(fzf-complete-line)
-
 nmap <Leader>s :Snippets<cr>
-
 let g:fzf_history_dir = '~/.local/share/fzf-history'
-
 let g:fzf_colors =
   \ { 'fg':    ['fg', 'Special'],
   \ 'bg':      ['bg', 'Normal'],
@@ -132,7 +102,6 @@ let g:fzf_preview_window = ['right:66%:hidden', 'ctrl-/']
 " }}}
 " -----------------------------------------------------------------------------
 " vim-easy-align {{{
-
 let g:easy_align_delimiters = {
 \ '>': { 'pattern': '>>\|=>\|>' },
 \ '\': { 'pattern': '\\' },
@@ -171,7 +140,6 @@ nmap gaa ga_
 xmap <Leader>ga <Plug>(LiveEasyAlign)
 
 vmap <Enter> <Plug>(EasyAlign)
-
 " }}}
 " -----------------------------------------------------------------------------
 " Vim-floaterm {{{

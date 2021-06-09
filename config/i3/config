@@ -106,6 +106,7 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec "alacritty --config-file ~/.config/alacritty/alacritty.yml -e tmux new-session -As Howki"
 bindsym $mod+q exec "alacritty --class Alacritty,floatAlacritty --config-file ~/.config/alacritty/alacritty.yml"
+bindsym $mod+y exec "mate-screenshot"
 
 # kill focused window
 bindsym $mod+i kill
@@ -129,10 +130,10 @@ bindsym $mod+Shift+$up move up 35 px
 bindsym $mod+Shift+$right move right 35 px
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left 35 px
-bindsym $mod+Shift+Down move down 35 px
-bindsym $mod+Shift+Up move up 35 px
-bindsym $mod+Shift+Right move right 35 px
+bindsym $mod+Shift+Left move left 50 px
+bindsym $mod+Shift+Down move down 50 px
+bindsym $mod+Shift+Up move up 50 px
+bindsym $mod+Shift+Right move right 50 px
 
 # split in horizontal orientation
 bindsym $mod+Shift+v split h
@@ -169,7 +170,7 @@ bindsym $mod+minus scratchpad show
 floating_minimum_size 100 x 40
 floating_maximum_size 900 x 400
 
-for_window [class="floatAlacritty"] floating enable; move position 55 ppt 50 ppt;
+for_window [class="floatAlacritty"] floating enable
 for_window [class=".*"] title_format "<b>%class</b>"
 
 bindsym $mod+c move position 55 ppt 50 ppt

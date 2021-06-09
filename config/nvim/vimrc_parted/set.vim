@@ -1,6 +1,5 @@
 " Part of vimrc (set/let variables)
 " vim: set foldmethod=marker
-
 " -------------------------------------------------------------------------------
 " Folding {{{
 set foldlevelstart=1
@@ -11,7 +10,6 @@ set encoding=utf-8
 " }}}
 " -------------------------------------------------------------------------------
 " Standard {{{
-
 set history=5000 " History size
 
 set showcmd " Show partial command                         
@@ -37,18 +35,16 @@ set hidden
 set nobackup
 set nowritebackup
 set noswapfile
-
 "}}}
 " -------------------------------------------------------------------------------
 " Listchars {{{
-set nolist                              " Show whitespaces
-set listchars=nbsp:⦸                  " CIRCLED REVERSE SOLIDUS (U+29B8, UTF-8: E2 A6 B8)
-set listchars+=tab:▷┅                   " WHITE RIGHT-POINTING TRIANGLE (U+25B7, UTF-8: E2 96 B7)
-                                      " + BOX DRAWINGS HEAVY TRIPLE DASH HORIZONTAL (U+2505, UTF-8: E2 94 85)
-set listchars+=extends:»              " RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00BB, UTF-8: C2 BB)
-set listchars+=precedes:«             " LEFT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00AB, UTF-8: C2 AB)
-set listchars+=trail:•                " BULLET (U+2022, UTF-8: E2 80 A2)
-set nojoinspaces                      " don't autoinsert two spaces after '.', '?', '!' for join command
+set nolist
+set listchars=nbsp:⦸
+set listchars+=tab:▷┅
+set listchars+=extends:»
+set listchars+=precedes:«
+set listchars+=trail:•
+set nojoinspaces
 
 set backspace=indent,start,eol
 " }}}
@@ -60,7 +56,7 @@ set shortmess+=I                      " no splash screen
 set shortmess+=O                      " file-read message overwrites previous
 set shortmess+=T                      " truncate non-file messages in middle
 set shortmess+=W                      " don't echo "[w]"/"[written]" when writing
-set shortmess+=a                      " use abbreviations in messages eg. `[RO]` instead of `[readonly]`
+set shortmess+=a                      " `[RO]` instead of `[readonly]`
 set shortmess+=o                      " overwrite file-written messages
 set shortmess+=t                      " truncate file messages at start
 " }}}
@@ -111,18 +107,14 @@ colorscheme space_vim_theme
 " -------------------------------------------------------------------------------
 " Another {{{
 set mouse=a
-
 set updatetime=10000
 set autoread
 set nospell
-
 set exrc
 set sidescrolloff=5
 set scrolloff=5
-
 set undofile
 set undodir=/tmp
-
 " }}}
 " -------------------------------------------------------------------------------
 " Netrw {{{
@@ -131,6 +123,5 @@ let g:netrw_liststyle = 2
 let g:netrw_browse_split = 4
 let g:netrw_winsize = 25
 let g:netrw_altv = 1
-
 " }}}
 " -------------------------------------------------------------------------------

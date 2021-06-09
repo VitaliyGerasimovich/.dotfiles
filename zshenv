@@ -1,10 +1,10 @@
-# Zshenv {{{
-
+# Zshenv 
+# -----------------------------------------------------------------------------
+# PATH {{{
 export PATH=~/.npm-global/bin:$PATH
 export PATH=~/.local/bin:$PATH
 export PATH=~/.gem/ruby/2.7.0/bin:$PATH
 export PATH=~/bin:$PATH
-
 # }}}
 # -----------------------------------------------------------------------------
 # Proxy {{{
@@ -18,14 +18,11 @@ export VAGRANT_HTTP_PROXY=${http_proxy}
 export VAGRANT_HTTPS_PROXY=${https_proxy}
 export VAGRANT_DEFAULT_PROVIDER=libvirt
 export LIBVIRT_DEFAULT_URI="qemu:///system"
-
 # }}}
 # -----------------------------------------------------------------------------
 # Ansible {{{
-
 export ANSIBLE_INVENTORY=hosts.ini
 export ANSIBLE_HOST_KEY_CHECKING=False
-
 # }}}
 # -----------------------------------------------------------------------------
 # nnn {{{
@@ -118,7 +115,6 @@ alias gl="glances"
 
 alias chu="chmod u+x"
 alias sch="sudo chmod"
-
 # }}}
 # -----------------------------------------------------------------------------
 # Task {{{
@@ -127,9 +123,7 @@ alias tn="task next"
 # }}}
 # -----------------------------------------------------------------------------
 # Other {{{
-
 umask 077
-
 # }}}
 # -----------------------------------------------------------------------------
 # FZF {{{
@@ -140,7 +134,6 @@ export FZF_DEFAULT_OPTS="--no-mouse --height 50% -1 --reverse --multi --inline-i
 export FZF_DEFAULT_COMMAND="git ls-files --cached --others --exclude-standard | fd --type f --type l $FD_OPTIONS"
 export FZF_CTRL_T_COMMAND="fd $FD_OPTIONS"
 export FZF_ALT_C_COMMAND="fd --type d $FD_OPTIONS"
-
 # }}}
 # -----------------------------------------------------------------------------
 export BAT_PAGER="less -R"
