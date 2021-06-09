@@ -21,14 +21,14 @@ command=echo "Mem:" `free -m | awk '/Mem/ {print $3/$2*100}'`
 # min_width=80
 align=center
 interval=once
-color=#A4C2F4
+color=#91E78B
 interval=1
 
 # Update time every 5 seconds
-[uptime]
-command=uptime
-interval=1
-color=#91E78B
+# [uptime]
+# command=uptime
+# interval=1
+# color=#91E78B
 
 # Query my default IP address only on startup
 [ip]

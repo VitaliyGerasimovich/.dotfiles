@@ -69,7 +69,8 @@ alias suod="sudo"
 alias cr='find . 2>/dev/null -regex '\''.*\.\(c\|cpp\|pc\|h\|hpp\|cc\)$'\'' | xargs grep --color=always -ni -C2'
 alias info="info --vi-keys"
 
-alias vrc="nvim ~/.vimrc ~/.config/nvim/vimrc_parted/* ~/.config/i3/config ~/.config/i3blocks/config"
+alias zrc="vim ~/.zshrc"
+alias vrc="nvim ~/.vimrc ~/.config/nvim/vrcs/* ~/.config/i3/config ~/.config/i3blocks/config"
 alias vh="nvim +help +only"
 alias vim="nvim"
 alias vi="nvim"
@@ -92,7 +93,6 @@ alias lla="ls -A --color=auto -h"
 alias sl="ls -F --color=auto"
 
 alias h="history -E"
-alias zrc="vim ~/.zshrc"
 
 alias awk="gawk"
 
@@ -106,7 +106,6 @@ alias nf="neofetch"
 alias bat="bat --color always --theme 'Solarized (dark)' --tabs 2"
 
 alias i3l='i3lock -e -u -c 1D1F21'
-alias ftail="multitail -f -cS zarafa"
 
 alias i="info"
 alias m="man"
@@ -127,10 +126,8 @@ umask 077
 # }}}
 # -----------------------------------------------------------------------------
 # FZF {{{
-
 FD_OPTIONS="-H --follow --exclude .git --exclude node_modules"
 export FZF_DEFAULT_OPTS="--no-mouse --height 50% -1 --reverse --multi --inline-info"
-# export FZF_DEFAULT_OPTS="--no-mouse --height 50% -1 --reverse --multi --inline-info --preview='[[ \$(file --mime {}) =~ binary  ]] && echo {} is a binary file || (bat --style=numbers --color=always {} || cat {}) 2> /dev/null | head -300' --bind='f3:execute(bat --style=numbers {} || less -f {}),f2:toggle-preview,ctrl-d:half-page-down,ctrl-u:half-page-up,ctrl-a:select-all+accept,ctrl-y:execute-silent(echo {+} | pbcopy)'"
 export FZF_DEFAULT_COMMAND="git ls-files --cached --others --exclude-standard | fd --type f --type l $FD_OPTIONS"
 export FZF_CTRL_T_COMMAND="fd $FD_OPTIONS"
 export FZF_ALT_C_COMMAND="fd --type d $FD_OPTIONS"

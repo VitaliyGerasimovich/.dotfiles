@@ -15,6 +15,6 @@ set langmenu=en
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 " Source all part of vimrc
-for f in split(glob("~/.config/nvim/vimrc_parted/*.vim"), '\n')
+for f in split(glob("~/.config/nvim/vrcs/*.vim"), '\n')
   exe 'source' f
 endfor
