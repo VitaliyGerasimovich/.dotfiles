@@ -25,11 +25,6 @@ export ANSIBLE_INVENTORY=hosts.ini
 export ANSIBLE_HOST_KEY_CHECKING=False
 # }}}
 # -----------------------------------------------------------------------------
-# nnn {{{
-
-
-# }}}
-# -----------------------------------------------------------------------------
 # Export {{{
 export GTK_THEME=Adwaita:dark
 

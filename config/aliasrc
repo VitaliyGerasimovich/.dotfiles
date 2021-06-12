@@ -1,0 +1,79 @@
+# Aliases zsh
+
+# System
+alias SS="sudo systemctl"
+alias shn="sudo shutdown -h now"
+alias shr="sudo shutdown -r now"
+alias suod="sudo"
+
+# Applications
+alias gc="google-chrome"
+alias ff="firefox"
+alias n3="nnn -ed"
+alias qemu="qemu-system-x86_64"
+
+# Vagrant
+alias vgu="vagrant up"
+alias vgi="vagrant init"
+
+# Finder
+alias cr='find . 2>/dev/null -regex '\''.*\.\(c\|cpp\|pc\|h\|hpp\|cc\)$'\'' | xargs grep --color=always -ni -C2'
+
+# Vim / rc
+alias rc="cd ~/.dotfiles/ ; v ~/.dotfiles/config/nvim/init.vim"
+alias vh="nvim +help +only"
+alias vim="nvim"
+alias vi="nvim"
+alias v="nvim"
+
+# General
+alias mkdir="mkdir -pv"
+alias yt="youtube-dl --add-metadata -ic"
+alias yta="youtube-dl --add-metadata -xic"
+alias pip="pip3"
+
+# LS
+alias ls="ls -F --color=auto"
+alias la="ls -A --color=auto"
+alias ll="ls -l --color=auto -h"
+alias lla="ls -A --color=auto -h"
+alias sl="ls -F --color=auto"
+
+alias h="history -E"
+
+# Text filtering / finder
+alias awk="gawk"
+alias grep="grep --color=auto"
+
+# Other
+alias ms="mate-screenshot"
+
+# ZYPP
+alias zs="zypper search"
+alias zi="zypper info"
+alias zin="sudo zypper install"
+
+# Text viewer
+alias bat="bat --color always --theme 'Solarized (dark)' --tabs 2"
+
+alias i3l='i3lock -e -u -c 1D1F21'
+
+# Man / info
+alias info="info --vi-keys"
+alias i="info --vi-keys"
+alias m="man"
+alias mf="man -Hfirefox"
+
+# Monitoring
+alias psc="ps xawf -eo pid,user,cgroup,args"
+alias gl="glances"
+alias nf="neofetch"
+alias Z="sudo zypper"
+alias r="ranger"
+
+# Permissions
+alias chu="chmod u+x"
+alias sch="sudo chmod"
+
+# source
+alias szsh=". ~/.zshenv ~/.zshrc"
