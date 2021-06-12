@@ -27,7 +27,6 @@ export ANSIBLE_HOST_KEY_CHECKING=False
 # -----------------------------------------------------------------------------
 # nnn {{{
 
-alias n3="nnn -ed"
 
 # }}}
 # -----------------------------------------------------------------------------
@@ -42,87 +41,9 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 # }}}
 # -----------------------------------------------------------------------------
-# Application shortcast {{{
-alias SS="sudo systemctl"
-alias Z="sudo zypper"
-alias r="ranger"
-
-alias shn="sudo shutdown -h now"
-alias shr="sudo shutdown -r now"
-
-alias yt="youtube-dl --add-metadata -ic"
-alias yta="youtube-dl --add-metadata -xic"
-
-alias zi="zypper info"
-alias zin="sudo zypper install"
-
-alias mf="man -Hfirefox"
-alias rc="v ~/.zshrc ~/.zshenv ~/.tmux.conf"
-alias qemu="qemu-system-x86_64"
-
-# Vagrant
-alias vgu="vagrant up"
-alias vgi="vagrant init"
-
-alias suod="sudo"
-
-alias cr='find . 2>/dev/null -regex '\''.*\.\(c\|cpp\|pc\|h\|hpp\|cc\)$'\'' | xargs grep --color=always -ni -C2'
-alias info="info --vi-keys"
-
-alias zrc="vim ~/.zshrc"
-alias vrc="nvim ~/.vimrc ~/.config/nvim/vrcs/* ~/.config/i3/config ~/.config/i3blocks/config"
-alias vh="nvim +help +only"
-alias vim="nvim"
-alias vi="nvim"
-alias v="nvim"
-
-alias psc="ps xawf -eo pid,user,cgroup,args"
-alias grep="grep --color=auto"
-
-alias gc="google-chrome"
-alias ff="firefox"
-
-alias pip="pip3"
-alias mkdir="mkdir -pv"
-
-# LS
-alias ls="ls -F --color=auto"
-alias la="ls -A --color=auto"
-alias ll="ls -l --color=auto -h"
-alias lla="ls -A --color=auto -h"
-alias sl="ls -F --color=auto"
-
-alias h="history -E"
-
-alias awk="gawk"
-
-alias ms="mate-screenshot"
-
-
-alias zs="zypper search"
-
-alias nf="neofetch"
-
-alias bat="bat --color always --theme 'Solarized (dark)' --tabs 2"
-
-alias i3l='i3lock -e -u -c 1D1F21'
-
-alias i="info"
-alias m="man"
-
-alias gl="glances"
-
-alias chu="chmod u+x"
-alias sch="sudo chmod"
-# }}}
-# -----------------------------------------------------------------------------
 # Task {{{
 alias ta="task add"
 alias tn="task next"
-# }}}
-# -----------------------------------------------------------------------------
-# Other {{{
-umask 077
 # }}}
 # -----------------------------------------------------------------------------
 # FZF {{{

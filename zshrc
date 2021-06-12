@@ -1,28 +1,114 @@
 # ZSH
 
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-if [ $TERM != "linux" ]; then
-  ZSH_THEME="powerlevel10k/powerlevel10k"
-else
-  ZSH_THEME="arrow"
-fi
+# set permissions for new files
+umask 077
 
-plugins=(
-  vi-mode
-)
-
-source $ZSH/oh-my-zsh.sh
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -c /dev/hidraw[0-9]* ] && setxkbmap -model pc86 -layout us,ru -option grp:toggle,caps:escape,altwin:meta_alt,shift:both_capslock_cancel
-
-# additional source plugins
-. ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-. ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
+# complete command
 bindkey 'M-l' autosuggest-accept
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# Enable colors and change prompt:
+autoload -U colors && colors
+
+PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+
+# History in cache directory:
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.cache/zsh/history
+
+# Basic auto/tab complete:
+autoload -U compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+compinit
+_comp_options+=(globdots)		# Include hidden files.
+
+# vi mode
+bindkey -v
+export KEYTIMEOUT=1
+
+# Use vim keys in tab complete menu:
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -v '^?' backward-delete-char
+
+# FZF {{{
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# configure keyboard
+setxkbmap -model pc86 -layout us,ru -option grp:toggle,caps:escape,altwin:meta_alt,shift:both_capslock_cancel
+
+# zplug install / load
+source ~/.zplug/init.zsh
+zplug "changyuheng/fz", defer:1
+zplug "rupa/z", use:z.sh
+zplug 'dracula/zsh', as:theme
+zplug load
+
+# Use fd and fzf to get the args to a command.
+f() {
+  sels=( "${(@f)$(fd "${fd_default[@]}" "${@:2}"| fzf)}" )
+  test -n "$sels" && print -z -- "$1 ${sels[@]:q:q}"
+}
+
+pk() {
+  (date; ps -ef) |
+    fzf --bind='ctrl-r:reload(date; ps -ef)' \
+    --header=$'Press CTRL-R to reload\n\n' --header-lines=2 \
+    --preview='echo {}' --preview-window=down,3,wrap \
+    --layout=reverse --height=80% | awk '{print $2}' | xargs kill -9
+}
+
+# Like f, but not recursive.
+fm() f "$@" --max-depth 1
+
+# }}}
+
+# Change cursor shape for different vi modes.
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]] ||
+     [[ $1 = 'block' ]]; then
+    echo -ne '\e[1 q'
+  elif [[ ${KEYMAP} == main ]] ||
+       [[ ${KEYMAP} == viins ]] ||
+       [[ ${KEYMAP} = '' ]] ||
+       [[ $1 = 'beam' ]]; then
+    echo -ne '\e[5 q'
+  fi
+}
+zle -N zle-keymap-select
+zle-line-init() {
+    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+    echo -ne "\e[5 q"
+}
+zle -N zle-line-init
+echo -ne '\e[5 q' # Use beam shape cursor on startup.
+preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+
+# Use lf to switch directories and bind it to ctrl-v
+lfcd () {
+    tmp="$(mktemp)"
+    lf -last-dir-path="$tmp" "$@"
+    if [ -f "$tmp" ]; then
+        dir="$(cat "$tmp")"
+        rm -f "$tmp"
+        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+    fi
+}
+bindkey -s '^f' 'lfcd\n'
+
+# Edit line in vim with ctrl-e:
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^e' edit-command-line
+
+bindkey '^o' insert-last-word
+
+# Load aliases and shortcuts if existent.
+[ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc"
+[ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
+
+# Load zsh-syntax-highlighting; should be last.
+. ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+. ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

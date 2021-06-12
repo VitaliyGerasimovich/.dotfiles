@@ -98,8 +98,7 @@ autocmd! FileType fzf set laststatus=0 noshowmode noruler
 
 let g:fzf_buffers_jump = 0
 let g:fzf_layout = { 'up': '33%' }
-" let g:fzf_preview_window = ['right:66%:hidden', 'ctrl-/']
-let g:fzf_preview_window = ['right:66%:', 'ctrl-/']
+let g:fzf_preview_window = ['right:66%:hidden', 'ctrl-/']
 " }}}
 " -----------------------------------------------------------------------------
 " vim-easy-align {{{
