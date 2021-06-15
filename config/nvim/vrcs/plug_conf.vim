@@ -59,9 +59,9 @@ nnoremap <C-p> :GFiles<cr>
 nnoremap <C-b> :Buffers<cr>
 nnoremap <A-g> :Commits<cr>
 " Mapping selecting mappings
-nmap <Leader>q <plug>(fzf-maps-n)
-xmap <Leader>q <plug>(fzf-maps-x)
-omap <Leader>q <plug>(fzf-maps-o)
+nmap <Leader>; <plug>(fzf-maps-n)
+xmap <Leader>; <plug>(fzf-maps-x)
+omap <Leader>; <plug>(fzf-maps-o)
 " Insert mode completion
 imap <c-x><c-w> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
@@ -174,4 +174,13 @@ let g:nnn#action = {
       \ '<c-t>': 'tab split',
       \ '<c-x>': 'split',
       \ '<c-v>': 'vsplit' }
+" }}}
+" -----------------------------------------------------------------------------
+" {{{ Slime
+" let g:slime_target = "neovim"
+let g:slime_target = "tmux"
+let g:slime_no_mappings = 1
+xmap <leader>q <Plug>SlimeRegionSend
+nmap <leader>q <Plug>SlimeMotionSend
+nmap <leader>qq <Plug>SlimeLineSend
 " }}}

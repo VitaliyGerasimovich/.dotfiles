@@ -15,7 +15,7 @@ exec --no-startup-id xautolock -time 10 -locker "i3lock -e -u --color=1D1F21" -d
 
 # Custom configuration
 exec --no-startup-id clipit
-# exec --no-startup-id "setxkbmap -model pc86 -layout us,ru -option grp:toggle,caps:escape,altwin:meta_alt,shift:both_capslock_cancel"
+exec --no-startup-id "setxkbmap -model pc86 -layout us,ru -option grp:toggle,caps:escape,altwin:meta_alt,shift:both_capslock_cancel"
 exec --no-startup-id picom -f
 
 # background image
@@ -41,7 +41,7 @@ bar {
 
   status_command i3blocks
 
-  mode hide
+  # mode hide
   tray_output none
 
   colors {
@@ -228,7 +228,7 @@ assign [class="MuPDF"] $ws2
 # }}}
 # -----------------------------------------------------------------------------
 # gaps {{{
-gaps inner 25
+gaps inner 10
 gaps outer 5
 
 smart_gaps on

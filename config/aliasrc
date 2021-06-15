@@ -31,6 +31,7 @@ alias mkdir="mkdir -pv"
 alias yt="youtube-dl --add-metadata -ic"
 alias yta="youtube-dl --add-metadata -xic"
 alias pip="pip3"
+alias python="python3"
 
 # LS
 alias ls="ls -F --color=auto"

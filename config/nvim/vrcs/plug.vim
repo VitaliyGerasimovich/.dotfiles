@@ -70,5 +70,8 @@ Plug 'chrisbra/Colorizer'
 Plug 'masawada/completor-dictionary'
 Plug 'maralla/completor.vim'
 
+" Slime
+Plug 'jpalardy/vim-slime'
+
 " Initialize plugin system
 call plug#end()

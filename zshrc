@@ -1,4 +1,4 @@
-# ZSH
+# Howki zshrc
 
 # set permissions for new files
 umask 077
@@ -8,6 +8,9 @@ bindkey 'M-l' autosuggest-accept
 
 # Enable colors and change prompt:
 autoload -U colors && colors
+
+# complete low-case like upper-case
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 # History in cache directory:
 HISTSIZE=10000
@@ -32,7 +35,7 @@ bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
 
-# FZF {{{
+# fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # configure keyboard
@@ -42,74 +45,25 @@ setxkbmap -model pc86 -layout us,ru -option grp:toggle,caps:escape,altwin:meta_a
 source ~/.zplug/init.zsh
 zplug "changyuheng/fz", defer:1
 zplug "rupa/z", use:z.sh
-zplug 'dracula/zsh', as:theme
 zplug load
 
-# Use fd and fzf to get the args to a command.
-f() {
-  sels=( "${(@f)$(fd "${fd_default[@]}" "${@:2}"| fzf)}" )
-  test -n "$sels" && print -z -- "$1 ${sels[@]:q:q}"
-}
-
-pk() {
-  (date; ps -ef) |
-    fzf --bind='ctrl-r:reload(date; ps -ef)' \
-    --header=$'Press CTRL-R to reload\n\n' --header-lines=2 \
-    --preview='echo {}' --preview-window=down,3,wrap \
-    --layout=reverse --height=80% | awk '{print $2}' | xargs kill -9
-}
-
-# Like f, but not recursive.
-fm() f "$@" --max-depth 1
-
-# }}}
-
-# Change cursor shape for different vi modes.
-function zle-keymap-select {
-  if [[ ${KEYMAP} == vicmd ]] ||
-     [[ $1 = 'block' ]]; then
-    echo -ne '\e[1 q'
-  elif [[ ${KEYMAP} == main ]] ||
-       [[ ${KEYMAP} == viins ]] ||
-       [[ ${KEYMAP} = '' ]] ||
-       [[ $1 = 'beam' ]]; then
-    echo -ne '\e[5 q'
-  fi
-}
-
-zle -N zle-keymap-select
-zle-line-init() {
-    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-    echo -ne "\e[5 q"
-}
-zle -N zle-line-init
-echo -ne '\e[5 q' # Use beam shape cursor on startup.
-preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
-
-# Use lf to switch directories and bind it to ctrl-v
-lfcd () {
-    tmp="$(mktemp)"
-    lf -last-dir-path="$tmp" "$@"
-    if [ -f "$tmp" ]; then
-        dir="$(cat "$tmp")"
-        rm -f "$tmp"
-        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
-    fi
-}
 bindkey -s '^f' 'lfcd\n'
 
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
+# Insert last word
 bindkey '^o' insert-last-word
 
+# History move
 bindkey '^p' up-history
 bindkey '^n' down-history
 
 # Load aliases and shortcuts if existent.
 [ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc"
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
+[ -f "$HOME/.config/functionsrc" ] && source "$HOME/.config/functionsrc"
 
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 

@@ -29,7 +29,7 @@ interval=1
 command=hostname -i | awk '{ print "IP:" $1 }'
 min_width=130
 align=center
-interval=once
+interval=60
 color=#A4C2F4
 
 # Update time every 5 seconds
@@ -39,6 +39,7 @@ interval=1
 color=#91E78B
 
 [keymap]
+markup=pango
 command=bash -c 'xkb-switch;xkb-switch -W'
 min_width=30
 align=center
