@@ -30,7 +30,7 @@ export ANSIBLE_HOST_KEY_CHECKING=False
 export GTK_THEME=Adwaita:dark
 
 export ZSH="/home/howki/.oh-my-zsh"
-export EDITOR="nvim"
+export EDITOR="nvim -c 'startinsert'"
 
 export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8

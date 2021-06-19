@@ -76,6 +76,11 @@ Plug 'jpalardy/vim-slime'
 " lsp
 Plug 'neovim/nvim-lspconfig'
 
+" Telescope
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
 " Initialize plugin system
 call plug#end()
 

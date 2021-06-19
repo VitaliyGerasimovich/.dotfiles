@@ -56,6 +56,7 @@ let g:markdown_folding = 1
 " -----------------------------------------------------------------------------
 " FZF {{{
 nnoremap <Leader>g :GFiles<cr>
+nnoremap <C-p> :GFiles<cr>
 nnoremap <Leader>b :Buffers<cr>
 nnoremap <Leader>c :Commits<cr>
 nnoremap <Leader>l :Lines<CR>
@@ -204,5 +205,12 @@ nmap <leader>qq <Plug>SlimeLineSend
 lua << EOF
 require'lspconfig'.pyright.setup{}
 EOF
+"  }}}
+" -----------------------------------------------------------------------------
+"  {{{ Telescope
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 "  }}}
 " -----------------------------------------------------------------------------
