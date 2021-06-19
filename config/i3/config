@@ -223,7 +223,7 @@ assign [class="TelegramDesktop"] $ws4
 assign [class="Thunderbird"] $ws4
 assign [class="libreoffice"] $ws5
 # assign [class="Zathura"] $ws2
-assign [class="MuPDF"] $ws2
+# assign [class="MuPDF"] $ws2
 
 # }}}
 # -----------------------------------------------------------------------------

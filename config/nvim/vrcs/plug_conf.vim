@@ -55,13 +55,19 @@ let g:markdown_folding = 1
 " }}}
 " -----------------------------------------------------------------------------
 " FZF {{{
-nnoremap <C-p> :GFiles<cr>
-nnoremap <C-b> :Buffers<cr>
-nnoremap <A-g> :Commits<cr>
+nnoremap <Leader>g :GFiles<cr>
+nnoremap <Leader>b :Buffers<cr>
+nnoremap <Leader>c :Commits<cr>
+nnoremap <Leader>l :Lines<CR>
+nnoremap <Leader>m :Marks<cr>
+nnoremap <Leader>h :History<CR>
+nnoremap <Leader>f :Files<CR>
+
 " Mapping selecting mappings
 nmap <Leader>; <plug>(fzf-maps-n)
 xmap <Leader>; <plug>(fzf-maps-x)
 omap <Leader>; <plug>(fzf-maps-o)
+
 " Insert mode completion
 imap <c-x><c-w> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
@@ -130,16 +136,16 @@ let g:easy_align_delimiters = {
 \   }
 \ }
 
-" Start interactive EasyAlign in visual mode
-xmap ga <Plug>(EasyAlign)
+" " Start interactive EasyAlign in visual mode
+" xmap ga <Plug>(EasyAlign)
 
-" Start interactive EasyAlign with a Vim movement
-nmap ga <Plug>(EasyAlign)
-nmap gaa ga_
+" " Start interactive EasyAlign with a Vim movement
+" nmap ga <Plug>(EasyAlign)
+" nmap gaa ga_
 
-xmap <Leader>ga <Plug>(LiveEasyAlign)
+" xmap <Leader>ga <Plug>(LiveEasyAlign)
 
-vmap <Enter> <Plug>(EasyAlign)
+" vmap <Enter> <Plug>(EasyAlign)
 " }}}
 " -----------------------------------------------------------------------------
 " Vim-floaterm {{{
@@ -149,8 +155,17 @@ hi Floaterm guibg=black
 " Set floating window border line color to cyan, and background to orange
 hi FloatermBorder guibg=orange guifg=cyan
 
-let g:floaterm_wintype = 'split'
-let g:floaterm_height = 0.5
+let g:floaterm_wintype = 'vsplit'
+let g:floaterm_width = 0.5
+let g:floaterm_position = 'right'
+let g:floaterm_autoclose = 1
+let g:floaterm_wintitle = 0
+
+let g:floaterm_keymap_new    = '<Leader>tn'
+let g:floaterm_keymap_prev   = '<Leader>th'
+let g:floaterm_keymap_next   = '<Leader>tl'
+let g:floaterm_keymap_toggle = '<Leader>ti'
+let g:floaterm_keymap_kill   = '<Leader>tk'
 
 " }}}
 " -----------------------------------------------------------------------------
@@ -177,10 +192,17 @@ let g:nnn#action = {
 " }}}
 " -----------------------------------------------------------------------------
 " {{{ Slime
-" let g:slime_target = "neovim"
-let g:slime_target = "tmux"
+let g:slime_target = "neovim"
+" let g:slime_target = "tmux"
 let g:slime_no_mappings = 1
 xmap <leader>q <Plug>SlimeRegionSend
 nmap <leader>q <Plug>SlimeMotionSend
 nmap <leader>qq <Plug>SlimeLineSend
 " }}}
+" -----------------------------------------------------------------------------
+"  {{{ LSP 
+lua << EOF
+require'lspconfig'.pyright.setup{}
+EOF
+"  }}}
+" -----------------------------------------------------------------------------

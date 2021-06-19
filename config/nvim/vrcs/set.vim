@@ -1,14 +1,14 @@
 " Part of vimrc (set/let variables)
 " vim: set foldmethod=marker
-" -------------------------------------------------------------------------------
+" -----------------------------------------------------------------------------
 " Folding {{{
 set foldlevelstart=1
 " }}}
-" -------------------------------------------------------------------------------
+" -----------------------------------------------------------------------------
 " Encoding {{{
 set encoding=utf-8
 " }}}
-" -------------------------------------------------------------------------------
+" -----------------------------------------------------------------------------
 " Standard {{{
 set history=5000 " History size
 
@@ -20,6 +20,9 @@ set number
 
 set timeoutlen=300 " Time to complete sequence
 set lazyredraw " Draw after all commands complete
+
+set textwidth=79
+set colorcolumn=80
 
 set breakindent
 
@@ -40,7 +43,7 @@ set noswapfile
 set splitbelow
 set splitright
 "}}}
-" -------------------------------------------------------------------------------
+" -----------------------------------------------------------------------------
 " Listchars {{{
 set nolist
 set listchars=nbsp:⦸
@@ -52,7 +55,7 @@ set nojoinspaces
 
 set backspace=indent,start,eol
 " }}}
-" -------------------------------------------------------------------------------
+" -----------------------------------------------------------------------------
 " Shortmess {{{
 set shiftround                        " always indent by multiple of shiftwidth
 set shortmess+=A                      " ignore annoying swapfile messages
@@ -64,7 +67,7 @@ set shortmess+=a                      " `[RO]` instead of `[readonly]`
 set shortmess+=o                      " overwrite file-written messages
 set shortmess+=t                      " truncate file messages at start
 " }}}
-" -------------------------------------------------------------------------------
+" -----------------------------------------------------------------------------
 " Tab / indent {{{
 set smarttab                          " <tab>/<BS> indent/dedent in leading whitespace
 set expandtab
@@ -74,7 +77,7 @@ set autoindent
 set smartindent
 
 "}}}
-" -------------------------------------------------------------------------------
+" -----------------------------------------------------------------------------
 " Wildmenu {{{
 set wildmenu
 set wildmode=longest:full,full        " shell-like autocomplete to unambiguous portion
@@ -90,25 +93,25 @@ set wildignore+=migrations "Django migrations"
 set wildignore+=*.pyc "Python Object codes"
 set wildignore+=*.orig,*.rej "Merge resolution files"
 " }}}
-" -------------------------------------------------------------------------------
+" -----------------------------------------------------------------------------
 " Syntax {{{
 syntax enable
 filetype plugin indent on
 " }}}
-" -------------------------------------------------------------------------------
+" -----------------------------------------------------------------------------
 " Lib / shell {{{
 set shell=/bin/zsh
 
 set path+=**
 set complete+=i
 " }}}
-" -------------------------------------------------------------------------------
+" -----------------------------------------------------------------------------
 " Theme {{{
 set termguicolors
 set background=dark
 colorscheme space_vim_theme
 " }}}
-" -------------------------------------------------------------------------------
+" -----------------------------------------------------------------------------
 " Another {{{
 set mouse=a
 set updatetime=10000
@@ -120,12 +123,4 @@ set scrolloff=5
 set undofile
 set undodir=/tmp
 " }}}
-" -------------------------------------------------------------------------------
-" Netrw {{{
-let g:netrw_banner = 0
-let g:netrw_liststyle = 2
-let g:netrw_browse_split = 4
-let g:netrw_winsize = 25
-let g:netrw_altv = 1
-" }}}
-" -------------------------------------------------------------------------------
+" -----------------------------------------------------------------------------

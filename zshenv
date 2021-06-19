@@ -5,6 +5,7 @@ export PATH=~/.npm-global/bin:$PATH
 export PATH=~/.local/bin:$PATH
 export PATH=~/.gem/ruby/2.7.0/bin:$PATH
 export PATH=~/bin:$PATH
+export PATH=~/node_modules/.bin/:$PATH
 # }}}
 # -----------------------------------------------------------------------------
 # Proxy {{{
@@ -34,11 +35,6 @@ export EDITOR="nvim"
 export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-# }}}
-# -----------------------------------------------------------------------------
-# Task {{{
-alias ta="task add"
-alias tn="task next"
 # }}}
 # -----------------------------------------------------------------------------
 # FZF {{{

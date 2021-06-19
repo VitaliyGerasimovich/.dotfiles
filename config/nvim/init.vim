@@ -2,11 +2,8 @@
 " vim: set foldmethod=marker
 
 " Runtimepath
-set runtimepath^=~/.config/nvim/ runtimepath+=~/.config/nvim/after runtimepath+=~/.config/nvim/lua
+set runtimepath^=~/.config/nvim/ runtimepath+=~/.config/nvim/after runtimepath+=~/.config/nvim/lua runtimepath+=~/.config/nvim/plugin
 let &packpath = &runtimepath
-
-" vimrc parts
-let $VIMRC_PART='~/.config/nvim/vimrc_parted'
 
 " :W sudo saves the file
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit!

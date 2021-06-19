@@ -78,3 +78,11 @@ alias sch="sudo chmod"
 
 # source
 alias szsh=". ~/.zshenv ~/.zshrc"
+
+# bluetooth
+alias bl="bluetoothctl"
+alias blc="bluetoothctl connect"
+
+# Task {{{
+alias ta="task add"
+alias tn="task next"

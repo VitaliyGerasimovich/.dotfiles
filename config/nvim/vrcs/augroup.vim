@@ -21,19 +21,10 @@ augroup every
   au FileChangedRO * set readonly!
 augroup END
 
-augroup anything
-
-augroup vimrc
-  autocmd!
-  " Source your vimrc on save
-  autocmd! BufWritePost .vimrc source %
-  " Apply modeline option after re-openning the vimrc file (that is after sourcing it)
-  autocmd! BufWritePost .vimrc set modeline | doautocmd BufRead
-  autocmd! BufEnter *.vim set foldmethod=marker
-augroup END
-
 augroup terminal
   autocmd TermOpen * setlocal nonumber norelativenumber
 augroup EN 
 
 autocmd FileType * execute 'setlocal dictionary='.expand($HOME.'/.vim/dict/'.&filetype.'.dict')
+
+autocmd BufNewFile,BufRead *.py set keywordprg=pydoc3

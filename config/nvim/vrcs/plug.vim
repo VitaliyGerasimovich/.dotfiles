@@ -73,5 +73,10 @@ Plug 'maralla/completor.vim'
 " Slime
 Plug 'jpalardy/vim-slime'
 
+" lsp
+Plug 'neovim/nvim-lspconfig'
+
 " Initialize plugin system
 call plug#end()
+
+packadd termdebug

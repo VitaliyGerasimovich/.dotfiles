@@ -201,13 +201,13 @@ cursor:
   # Cursor style
   style:
     shape: Block
-    blinking: Off
+    blinking: Always
 
   # Vi mode cursor style
   vi_mode_style: None
 
   # Cursor blinking interval in milliseconds.
-  blink_interval: 750
+  blink_interval: 666
 
   # If this is `true`, the cursor will be rendered as a hollow box when the
   # window is not focused.
