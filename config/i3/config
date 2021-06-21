@@ -104,7 +104,7 @@ set $right l
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec "alacritty --config-file ~/.config/alacritty/alacritty.yml -e tmux new-session -As Howki"
+bindsym $mod+Return exec "alacritty --config-file ~/.config/alacritty/alacritty.yml -e tmux new-session -As H"
 bindsym $mod+q exec "alacritty --class Alacritty,floatAlacritty --config-file ~/.config/alacritty/alacritty.yml"
 bindsym $mod+y exec "mate-screenshot"
 

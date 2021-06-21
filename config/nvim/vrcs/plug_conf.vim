@@ -5,9 +5,6 @@
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 " Turn on case-insensitive feature
 let g:EasyMotion_smartcase = 1
-" JK motions: Line motions
-nmap <Leader>j <Plug>(easymotion-j)
-nmap <Leader>k <Plug>(easymotion-k)
 " s{char}{char} to move to {char}{char}
 nmap s <Plug>(easymotion-overwin-f)
 " }}}
@@ -55,6 +52,7 @@ let g:markdown_folding = 1
 " }}}
 " -----------------------------------------------------------------------------
 " FZF {{{
+let $FZF_DEFAULT_OPTS='--reverse'
 nnoremap <Leader>g :GFiles<cr>
 nnoremap <C-p> :GFiles<cr>
 nnoremap <Leader>b :Buffers<cr>
@@ -63,6 +61,69 @@ nnoremap <Leader>l :Lines<CR>
 nnoremap <Leader>m :Marks<cr>
 nnoremap <Leader>h :History<CR>
 nnoremap <Leader>f :Files<CR>
+nnoremap <Leader>gc :GBranches<CR>
+
+" Mapping selecting mappings
+nmap <Leader>; <plug>(fzf-maps-n)
+xmap <Leader>; <plug>(fzf-maps-x)
+omap <Leader>; <plug>(fzf-maps-o)
+
+" Insert mode completion
+imap <c-x><c-w> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+nmap <Leader>s :Snippets<cr>
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+let g:fzf_colors =
+  \ { 'fg':    ['fg', 'Special'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'Ignore'],
+  \ 'border':  ['fg', 'Normal'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+function! s:fzf_statusline()
+" Override statusline as you like
+  highlight fzf1 ctermfg=161 ctermbg=251
+  highlight fzf2 ctermfg=23 ctermbg=251
+  highlight fzf3 ctermfg=237 ctermbg=251
+  setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
+endfunction
+
+autocmd! User FzfStatusLine call <SID>fzf_statusline()
+
+autocmd! FileType fzf set laststatus=0 noshowmode noruler
+  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+
+let g:fzf_buffers_jump = 0
+let g:fzf_layout = { 'up': '33%' }
+let g:fzf_preview_window = ['right:66%:hidden', 'ctrl-/']
+" }}}
+" -----------------------------------------------------------------------------
+" Gitgutter {{{
+nnoremap <Leader>gh :diffget //3<CR>
+nnoremap <Leader>gu :diffget //2<CR>
+nnoremap <Leader>gs :G <CR>
+" }}}
+" -----------------------------------------------------------------------------
+" FZF {{{
+let $FZF_DEFAULT_OPTS='--reverse'
+nnoremap <Leader>g :GFiles<cr>
+nnoremap <C-p> :GFiles<cr>
+nnoremap <Leader>b :Buffers<cr>
+nnoremap <Leader>c :Commits<cr>
+nnoremap <Leader>l :Lines<CR>
+nnoremap <Leader>m :Marks<cr>
+nnoremap <Leader>h :History<CR>
+nnoremap <Leader>f :Files<CR>
+nnoremap <Leader>gc :GBranches<CR>
 
 " Mapping selecting mappings
 nmap <Leader>; <plug>(fzf-maps-n)
@@ -177,7 +238,7 @@ let g:UltiSnipsJumpForwardTrigger="<A-l>"
 let g:UltiSnipsJumpBackwardTrigger="<A-h>"
 let g:UltiSnipsEditSplit="tabdo"
 let g:UltiSnipsSnippetsDir=["~/.config/UltiSnips"]
-  
+
 " }}}
 " -----------------------------------------------------------------------------
 " {{{ nnn
@@ -201,10 +262,91 @@ nmap <leader>q <Plug>SlimeMotionSend
 nmap <leader>qq <Plug>SlimeLineSend
 " }}}
 " -----------------------------------------------------------------------------
-"  {{{ LSP 
-lua << EOF
-require'lspconfig'.pyright.setup{}
-EOF
+"  {{{ coc
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> <Leader>gd <Plug>(coc-definition)
+nmap <silent> <Leader>gy <Plug>(coc-type-definition)
+nmap <silent> <Leader>gi <Plug>(coc-implementation)
+nmap <silent> <Leader>gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Mappings for CoCList
+" Show all diagnostics.
+nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list.
+nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 "  }}}
 " -----------------------------------------------------------------------------
 "  {{{ Telescope

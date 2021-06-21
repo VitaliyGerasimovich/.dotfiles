@@ -1,4 +1,4 @@
-" Howki vimrc
+" Howki
 " vim: set foldmethod=marker
 
 " Runtimepath
@@ -14,7 +14,6 @@ set langmenu=en
 
 " Runtime settings
 source $VIMRUNTIME/delmenu.vim
-source $VIMRUNTIME/menu.vim
 
 " Source all part of vimrc
 for f in split(glob("~/.config/nvim/vrcs/*.vim"), '\n')

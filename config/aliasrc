@@ -5,6 +5,7 @@ alias SS="sudo systemctl"
 alias shn="sudo shutdown -h now"
 alias shr="sudo shutdown -r now"
 alias suod="sudo"
+alias p8="ping 8.8.8.8"
 
 # Applications
 alias gc="google-chrome"

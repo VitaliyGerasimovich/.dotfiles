@@ -10,36 +10,42 @@ set encoding=utf-8
 " }}}
 " -----------------------------------------------------------------------------
 " Standard {{{
+if has("nvim-0.5.0") || has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
 set history=5000 " History size
-
 set showcmd " Show partial command                         
 set showmode! " Show current mode
-
+" Line numbers
 set relativenumber
 set number
-
-set timeoutlen=300 " Time to complete sequence
-set lazyredraw " Draw after all commands complete
-
+" Time to complete sequence
+set timeoutlen=200
+" Draw after all commands complete
+set lazyredraw
+" Text width
 set textwidth=79
+" Restrict 80 characters
 set colorcolumn=80
-
+" Same number spaces
 set breakindent
-
+" Smart search (SS => SS; ss => Ss, sS, ss; Ss => Ss; sS => sS)
 set smartcase
 set ignorecase
-
+" Wrap to textwidth
 set wrap
-set title
+" Show line / column
 set ruler
-
+" Allow hide modified buffer
 set hidden
-
+" No backup
 set nobackup
 set nowritebackup
 set noswapfile
-
-" open new split panes to right and bottom, which feels more natural
+" Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright
 "}}}
@@ -52,7 +58,6 @@ set listchars+=extends:»
 set listchars+=precedes:«
 set listchars+=trail:•
 set nojoinspaces
-
 set backspace=indent,start,eol
 " }}}
 " -----------------------------------------------------------------------------
@@ -66,6 +71,7 @@ set shortmess+=W                      " don't echo "[w]"/"[written]" when writin
 set shortmess+=a                      " `[RO]` instead of `[readonly]`
 set shortmess+=o                      " overwrite file-written messages
 set shortmess+=t                      " truncate file messages at start
+set shortmess+=c
 " }}}
 " -----------------------------------------------------------------------------
 " Tab / indent {{{
@@ -75,10 +81,10 @@ set tabstop=2
 set shiftwidth=2                      " spaces per tab (when shifting)
 set autoindent
 set smartindent
-
 "}}}
 " -----------------------------------------------------------------------------
 " Wildmenu {{{
+set cmdheight=1
 set wildmenu
 set wildmode=longest:full,full        " shell-like autocomplete to unambiguous portion
 set wildignore+=.hg,.git,.svn " Version Controls"
@@ -101,9 +107,9 @@ filetype plugin indent on
 " -----------------------------------------------------------------------------
 " Lib / shell {{{
 set shell=/bin/zsh
-
 set path+=**
 set complete+=i
+set completeopt+=noinsert
 " }}}
 " -----------------------------------------------------------------------------
 " Theme {{{
@@ -122,5 +128,6 @@ set sidescrolloff=5
 set scrolloff=5
 set undofile
 set undodir=/tmp
+hi Search guibg=peur guifg=wheat
 " }}}
 " -----------------------------------------------------------------------------

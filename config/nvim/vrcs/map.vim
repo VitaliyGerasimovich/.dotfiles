@@ -66,8 +66,6 @@ nnoremap - <C-w>-
 noremap <A-.> ZZ
 
 " INSERT MODE
-inoremap jk <esc>
-inoremap jj <esc>
 inoremap <A-r> <C-r><C-p>
 inoremap <A-.> <C-o>ZZ
 
@@ -90,4 +88,4 @@ tnoremap <A-i> <C-\><C-N>
 tnoremap <A-h> <C-\><C-N><C-w>h
 tnoremap <A-j> <C-\><C-N><C-w>j
 tnoremap <A-k> <C-\><C-N><C-w>k
-tnoremap <A-l> <C-\><C-N><C-w>l
+tnoremap <C-w> <C-\><C-N><C-w>

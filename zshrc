@@ -5,10 +5,10 @@ umask 077
 
 # complete command
 bindkey 'M-l' autosuggest-accept
+bindkey '^ ' autosuggest-execute
 
 # Enable colors and change prompt:
 autoload -U colors && colors
-
 # complete low-case like upper-case
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
