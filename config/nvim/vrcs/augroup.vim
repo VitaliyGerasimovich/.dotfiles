@@ -11,6 +11,8 @@ augroup END
 
 augroup filetypedetect
   au BufRead,BufNewFile Vagrantfile set filetype=ruby
+  au BufRead,BufNewFile *rc set foldmethod=marker
+  au BufRead,BufNewFile *vim set foldmethod=marker
 augroup END
 
 augroup every
