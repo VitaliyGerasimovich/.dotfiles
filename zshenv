@@ -4,6 +4,8 @@
 export PATH=~/.npm-global/bin:$PATH
 export PATH=~/.local/bin:$PATH
 export PATH=~/.gem/ruby/2.7.0/bin:$PATH
+export PATH=~/.gem/ruby/2.7.0:$PATH
+export PATH=/usr/lib64/ruby/2.7.0:$PATH
 export PATH=~/bin:$PATH
 export PATH=~/node_modules/.bin/:$PATH
 # }}}

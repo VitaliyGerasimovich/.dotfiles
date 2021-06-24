@@ -11,6 +11,8 @@ bindkey '^ ' autosuggest-execute
 autoload -U colors && colors
 # complete low-case like upper-case
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' menu select
+zstyle ':completion:*' rehash true
 
 # History in cache directory:
 HISTSIZE=10000
@@ -19,10 +21,11 @@ HISTFILE=~/.cache/zsh/history
 
 # Basic auto/tab complete:
 autoload -U compinit
-zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
-_comp_options+=(globdots)		# Include hidden files.
+_comp_options+=(globdots)
+autoload -Uz promptinit
+promptinit
 
 # vi mode
 bindkey -v
@@ -46,8 +49,6 @@ source ~/.zplug/init.zsh
 zplug "changyuheng/fz", defer:1
 zplug "rupa/z", use:z.sh
 zplug load
-
-bindkey -s '^f' 'lfcd\n'
 
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line

@@ -2,11 +2,12 @@
 " vim: set foldmethod=marker
 
 " Runtimepath
-set runtimepath^=~/.config/nvim/ runtimepath+=~/.config/nvim/after runtimepath+=~/.config/nvim/lua runtimepath+=~/.config/nvim/plugin
-let &packpath = &runtimepath
+set runtimepath^=~/.config/nvim/
+set runtimepath+=~/.config/nvim/after
+set runtimepath+=~/.config/nvim/lua
+set runtimepath+=~/.config/nvim/plugin
 
-" :W sudo saves the file
-command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
+let &packpath = &runtimepath
 
 " Language settings
 let $LANG='en'

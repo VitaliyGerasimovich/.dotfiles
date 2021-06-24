@@ -10,20 +10,20 @@ set encoding=utf-8
 " }}}
 " -----------------------------------------------------------------------------
 " Standard {{{
-if has("nvim-0.5.0") || has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
+" if has("nvim-0.5.0") || has("patch-8.1.1564")
+"   " Recently vim can merge signcolumn and number column into one
+"   set signcolumn=number
+" else
+"   set signcolumn=yes
+" endif
 set history=5000 " History size
-set showcmd " Show partial command                         
+set showcmd " Show partial comamnd
 set showmode! " Show current mode
 " Line numbers
 set relativenumber
 set number
 " Time to complete sequence
-set timeoutlen=200
+set timeoutlen=270
 " Draw after all commands complete
 set lazyredraw
 " Text width
@@ -84,9 +84,9 @@ set smartindent
 "}}}
 " -----------------------------------------------------------------------------
 " Wildmenu {{{
-set cmdheight=1
+set cmdheight=2
 set wildmenu
-set wildmode=longest:full,full        " shell-like autocomplete to unambiguous portion
+set wildmode=longest,list,full        " shell-like autocomplete to unambiguous portion
 set wildignore+=.hg,.git,.svn " Version Controls"
 set wildignore+=*.aux,*.out,*.toc "Latex Indermediate files"
 set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg "Binary Imgs"
@@ -129,5 +129,6 @@ set scrolloff=5
 set undofile
 set undodir=/tmp
 hi Search guibg=peur guifg=wheat
+let g:ruby_host_prog = '~/.gem/ruby/2.7.0/bin/neovim-ruby-host.ruby2.7'
 " }}}
 " -----------------------------------------------------------------------------
