@@ -78,7 +78,7 @@ vnoremap <Leader>y "*y
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 " O MODE
-onoremap <silent> e :<C-U>silent! normal! ggVG<CR>
+onoremap <silent> q :<C-U>silent! normal! ggVG<CR>
 
 " Terminal
 nnoremap <Leader>ti :terminal<CR>

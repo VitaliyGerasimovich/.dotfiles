@@ -53,4 +53,4 @@ Plug 'ThePrimeagen/vim-be-good'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
 " Initialize plugin system
- call plug#end()
+call plug#end()

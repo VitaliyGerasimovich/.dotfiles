@@ -56,7 +56,7 @@ alias zi="zypper info"
 alias zin="sudo zypper install"
 
 # Text viewer
-alias bat="bat --color always --theme 'Solarized (dark)' --tabs 2"
+alias bat="bat --color always --theme 'Nord' --tabs 2"
 
 alias i3l='i3lock -e -u -c 1D1F21'
 

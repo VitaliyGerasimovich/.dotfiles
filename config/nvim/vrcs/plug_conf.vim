@@ -31,28 +31,19 @@ nnoremap <Leader>gs :G <CR>
 " }}}
 " -----------------------------------------------------------------------------
 " FZF {{{
-let $FZF_DEFAULT_OPTS='--reverse'
+let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --margin=1,4"
+let $FZF_DEFAULT_COMMAND = 'rg --files --ignore-case --hidden -g "!{.git,node_modules,vendor}/*"'
+command! -bang -nargs=? -complete=dir Files
+     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 nnoremap <C-p>      :GFiles<CR>
 nnoremap <Leader>b  :Buffers<CR>
 nnoremap <Leader>c  :Commits<CR>
 nnoremap <Leader>f  :Files<CR>
 nnoremap <Leader>gc :GBranches<CR>
+nnoremap <Leader>m  :Marks<CR>
+nnoremap <Leader>l  :Lines<CR>
 
 let g:fzf_history_dir = '~/.local/share/fzf-history'
-let g:fzf_colors =
-  \ { 'fg':    ['fg', 'Special'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'Ignore'],
-  \ 'border':  ['fg', 'Normal'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
 
 function! s:fzf_statusline()
 " Override statusline as you like
@@ -68,7 +59,8 @@ autocmd! FileType fzf set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 
 let g:fzf_buffers_jump = 0
-let g:fzf_layout = { 'up': '33%' }
+" let g:fzf_layout = { 'up': '33%' }
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
 let g:fzf_preview_window = ['right:66%', 'ctrl-/']
 " }}}
 " -----------------------------------------------------------------------------
