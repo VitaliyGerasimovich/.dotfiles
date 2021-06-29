@@ -11,7 +11,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/vim-github-dashboard'
-Plug 'mbbill/undotree'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
 " repeater
 Plug 'tpope/vim-repeat'
 " align
@@ -43,10 +44,6 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'liuchengxu/space-vim-theme'
 " Slime
 Plug 'jpalardy/vim-slime'
-" Telescope
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
 " Game
 Plug 'ThePrimeagen/vim-be-good'
 " LSP

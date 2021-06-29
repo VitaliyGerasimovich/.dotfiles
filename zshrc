@@ -5,7 +5,6 @@ umask 077
 
 # complete command
 bindkey 'M-l' autosuggest-accept
-bindkey '^ ' autosuggest-execute
 
 # Enable colors and change prompt:
 autoload -U colors && colors

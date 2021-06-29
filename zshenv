@@ -1,4 +1,4 @@
-# Zshenv 
+# Zshenv
 # -----------------------------------------------------------------------------
 # PATH {{{
 export PATH=~/.npm-global/bin:$PATH
@@ -21,6 +21,12 @@ export VAGRANT_HTTP_PROXY=${http_proxy}
 export VAGRANT_HTTPS_PROXY=${https_proxy}
 export VAGRANT_DEFAULT_PROVIDER=libvirt
 export LIBVIRT_DEFAULT_URI="qemu:///system"
+# }}}
+# -----------------------------------------------------------------------------
+# git {{{
+alias gss="git status --short"
+alias ga="git add"
+alias gc="git commit -m"
 # }}}
 # -----------------------------------------------------------------------------
 # Ansible {{{

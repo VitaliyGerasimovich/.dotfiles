@@ -10,12 +10,6 @@ set encoding=utf-8
 " }}}
 " -----------------------------------------------------------------------------
 " Standard {{{
-" if has("nvim-0.5.0") || has("patch-8.1.1564")
-"   " Recently vim can merge signcolumn and number column into one
-"   set signcolumn=number
-" else
-"   set signcolumn=yes
-" endif
 set history=5000 " History size
 set showcmd " Show partial comamnd
 set showmode! " Show current mode
@@ -30,8 +24,6 @@ set lazyredraw
 set textwidth=79
 " Restrict 80 characters
 set colorcolumn=80
-" Same number spaces
-set breakindent
 " Smart search (SS => SS; ss => Ss, sS, ss; Ss => Ss; sS => sS)
 set smartcase
 set ignorecase
@@ -52,11 +44,6 @@ set splitright
 " -----------------------------------------------------------------------------
 " Listchars {{{
 set nolist
-set listchars=nbsp:⦸
-set listchars+=tab:▷┅
-set listchars+=extends:»
-set listchars+=precedes:«
-set listchars+=trail:•
 set nojoinspaces
 set backspace=indent,start,eol
 " }}}
@@ -78,7 +65,7 @@ set shortmess+=c
 set smarttab                          " <tab>/<BS> indent/dedent in leading whitespace
 set expandtab
 set tabstop=2
-set shiftwidth=2                      " spaces per tab (when shifting)
+set shiftwidth=0                      " spaces per tab (when shifting)
 set autoindent
 set smartindent
 "}}}
